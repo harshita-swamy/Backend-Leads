@@ -2,14 +2,14 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-export const PORT = process.env.PORT
+export const PORT = process.env.PORT     
 
-const env = {
+const env = {     
   db: {
-    host    : process.env.HOST  ,   
-    Database    : process.env.DATABASE ,  
-    user    : process.env.USER   ,  
-    password: process.env.PASSWORD ,
+    host    : process.env.DB_HOST  ,   
+    database    : process.env.DB_DATABASE ,        
+    user    : process.env.DB_USER   ,    
+    password: process.env.DB_PASSWORD ,  
     poolMax : parseInt(process.env.DB_POOL_MAX) || 50,
   },
   app: {

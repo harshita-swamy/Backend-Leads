@@ -12,7 +12,7 @@ export const pool = mysql2.createPool({
   queueLimit        : 0,                // unlimited queue
   enableKeepAlive   : true,
   keepAliveInitialDelay: 0,
-  timezone          : 'Z',              // UTC
+  timezone          : 'Z',              // UTC  
   decimalNumbers    : true,
   charset           : 'utf8mb4',        // emoji + special chars support
 });
