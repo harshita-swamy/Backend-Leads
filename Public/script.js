@@ -15,24 +15,15 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
   };
 
   try {
-    const res = await fetch("http://localhost:3115/api/createLead", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
+    // 🔥 DEMO MODE (no backend needed)
+    setTimeout(() => {
+      console.log("Form Data:", data);
 
-    const result = await res.json();
-
-    if (result.success) {
-      messageBox.innerHTML = "✅ Lead Created Successfully";
+      messageBox.innerHTML = "✅ Lead Submitted Successfully (Demo Mode)";
       document.getElementById("leadForm").reset();
-    } else {
-      messageBox.innerHTML = "❌ " + result.message;
-    }
+    }, 1000);
 
   } catch (err) {
-    messageBox.innerHTML = "❌ Server Error";
+    messageBox.innerHTML = "❌ Something went wrong";
   }
 });

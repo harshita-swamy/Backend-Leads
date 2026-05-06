@@ -7,7 +7,7 @@ export const pool = mysql2.createPool({
   database          : env.db.database,
   user              : env.db.user,
   password          : env.db.password || "",
-  waitForConnections: true,
+  waitForConnections: true,          
   connectionLimit   : env.db.poolMax,   // max 50 concurrent connections
   queueLimit        : 0,                // unlimited queue
   enableKeepAlive   : true,
