@@ -4,9 +4,9 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
   const messageBox = document.getElementById("message");
   messageBox.innerHTML = "Submitting...";
 
-  const data = {
+  const data = {  
     name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
+    email: document.getElementById("email").value,  
     phone: document.getElementById("phone").value,
     course_id: 1,
     source_id: 2,

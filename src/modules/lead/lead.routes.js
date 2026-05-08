@@ -7,7 +7,7 @@ router.post("/createLead", leadController.createLead);
 router.get("/getAllLeads", leadController.getAllLeads);
 router.put("/updateLead/:id", leadController.updateLeadStatus);
 router.delete("/deleteLead/:id", leadController.deleteLeads);
-router.post("/linkedin-webhook", leadController.linkedInWebhook);
+router.post("/linkedin-webhook", leadController.linkedInWebhook);                
 
 export default router;  
 
