@@ -60,6 +60,8 @@ export const deleteLeads = async (req, res) => {
 // LinkedIn Webhook
 export const linkedInWebhook = async (req, res) => {
   try {
+    console.log("BODY:", req.body);
+
     const result = await leadService.createLeadService({
       name: req.body.name,
       email: req.body.email,
@@ -70,12 +72,15 @@ export const linkedInWebhook = async (req, res) => {
       notes: "From LinkedIn webhook",
     });
 
-    return res.json({
-      success: true,
-      message: "Lead received from LinkedIn",
-      data: result,
-    });
+    return res.json(result);
+
   } catch (err) {
-    return response.error(res, err);
+    console.error("🔥 FULL ERROR:", err);  // 👈 THIS LINE IMPORTANT
+
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+      stack: err.stack
+    });
   }
-};  
+};
