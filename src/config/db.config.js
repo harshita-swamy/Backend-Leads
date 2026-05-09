@@ -2,8 +2,10 @@
 import mysql2 from "mysql2/promise";
 import env from "./env.config.js";
 
+
 export const pool = mysql2.createPool({
   host              : env.db.host,
+  port              : env.db.port,   
   database          : env.db.database,
   user              : env.db.user,
   password          : env.db.password || "",
@@ -14,7 +16,7 @@ export const pool = mysql2.createPool({
   keepAliveInitialDelay: 0,
   timezone          : 'Z',              // UTC  
   decimalNumbers    : true,
-  charset           : 'utf8mb4',        // emoji + special chars support
+  charset           : 'utf8mb4',        
 });
 
 // Startup pe connection test karo
