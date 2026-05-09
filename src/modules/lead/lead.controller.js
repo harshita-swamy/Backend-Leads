@@ -13,7 +13,7 @@ export const createLead = async (req, res) => {
         message: result.message,
       });
     }
-
+    
     return response.success(res, result, "Lead Created Successfully");
   } catch (err) {
     return response.error(res, err);
