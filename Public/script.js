@@ -16,6 +16,7 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch("https://backend-leads-rgut.onrender.com/api/createLead", {
+      
       method: "POST",
       headers: {
         "Content-Type": "application/json"
