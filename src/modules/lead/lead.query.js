@@ -1,11 +1,22 @@
 import { pool } from "../../config/db.config.js";
 
 export const checkDuplicateEmail = async (email) => {
-  const [res] = await pool.query(
-    "SELECT id FROM persons WHERE email = ?",
-    [email]
-  );
-  return res;
+
+  try {
+
+    const [res] = await pool.query(
+      "SELECT id FROM persons WHERE email = ?",
+      [email]
+    );
+
+    return res;
+
+  } catch (err) {
+
+    console.log("🔥 DB REAL ERROR:", err);
+
+    throw err;
+  }
 };
 
 export const createPerson = async (name, phone, email, gender, dob) => {
