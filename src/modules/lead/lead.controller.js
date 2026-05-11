@@ -1,7 +1,6 @@
 import * as leadService from "./lead.service.js";
 import * as response from "../../utils/response.util.js";
 
-  
 // Create Lead API
 export const createLead = async (req, res) => {
   try {
@@ -13,15 +12,14 @@ export const createLead = async (req, res) => {
         message: result.message,
       });
     }
-    
+
     return response.success(res, result, "Lead Created Successfully");
   } catch (err) {
     return response.error(res, err);
   }
 };
 
-
-// Get All Leads
+// Get All Leads (exclude deleted if soft delete used)
 export const getAllLeads = async (req, res) => {
   try {
     const data = await leadService.getAllLeadsService();
@@ -30,7 +28,6 @@ export const getAllLeads = async (req, res) => {
     return response.error(res, err);
   }
 };
-
 
 // Update Lead Status
 export const updateLeadStatus = async (req, res) => {
@@ -46,18 +43,17 @@ export const updateLeadStatus = async (req, res) => {
   }
 };
 
-
-// Delete Lead
+// Soft Delete Lead (IMPORTANT FIX)
 export const deleteLeads = async (req, res) => {
   try {
     const data = await leadService.deleteLeadService(req.params.id);
-    return response.success(res, data, "Lead Deleted Successfully");
+    return response.success(res, data, "Lead Deleted Successfully (Soft Delete)");
   } catch (err) {
     return response.error(res, err);
   }
 };
 
-// LinkedIn Webhook
+// LinkedIn Webhook (no major change, just safe logging)
 export const linkedInWebhook = async (req, res) => {
   try {
     console.log("BODY:", req.body);
@@ -75,7 +71,7 @@ export const linkedInWebhook = async (req, res) => {
     return res.json(result);
 
   } catch (err) {
-    console.error("🔥 FULL ERROR:", err);  // 👈 THIS LINE IMPORTANT
+    console.error("🔥 FULL ERROR:", err);
 
     return res.status(500).json({
       success: false,

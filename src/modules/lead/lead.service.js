@@ -12,6 +12,7 @@ export const createLeadService = async (data) => {
     };
   }
 
+  // create person (safe null values already handled in query file)
   const person = await leadQuery.createPerson(
     name,
     phone,
@@ -36,20 +37,40 @@ export const createLeadService = async (data) => {
   };
 };
 
+// Get all leads (already soft-delete handled in query)
 export const getAllLeadsService = async () => {
   return await leadQuery.getAllLeads();
 };
 
+// Update status (safe validation)
 export const updateLeadStatusService = async (id, status_id) => {
   if (!id || !status_id) throw new Error("Invalid input");
 
   await leadQuery.updateLeadStatus(id, status_id);
+
   return { id, status_id };
 };
 
+// Soft delete lead (IMPORTANT FIX)
 export const deleteLeadService = async (id) => {
   if (!id) throw new Error("ID required");
 
   const res = await leadQuery.deleteLeadById(id);
-  return { affectedRows: res.affectedRows };
+
+  return {
+    success: true,
+    affectedRows: res.affectedRows,
+  };
+};
+
+// Optional: last login update helper (future use)
+export const updateLoginService = async (person_id) => {
+  if (!person_id) throw new Error("Person ID required");
+
+  await leadQuery.updateLastLogin(person_id);
+
+  return {
+    success: true,
+    message: "Login time updated",
+  };
 };
