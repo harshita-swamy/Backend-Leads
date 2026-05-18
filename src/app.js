@@ -3,9 +3,11 @@ import cors from "cors";
 import routeLead from "./modules/lead/lead.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
-
 import followupRoutes from "./modules/leadfollowup/followup.routes.js";
 import assignmentLogRoutes from "./modules/leadAssignmentLogs/assignmentLog.routes.js";
+import statusRoutes from "./modules/leadStatuses/status.routes.js";
+import sourceRoutes from "./modules/leadSources/source.routes.js";
+import visitRoutes from "./modules/leadVisits/visit.routes.js";
 
 const app = express();
 
@@ -29,6 +31,9 @@ app.get("/test", (req, res) => {
 app.use("/api", routeLead);
 app.use("/api", followupRoutes);
 app.use("/api", assignmentLogRoutes);
+app.use("/api", statusRoutes);
+app.use("/api", sourceRoutes);
+app.use("/api", visitRoutes);
 
 // 404 handler
 app.use((req, res) => {
