@@ -1,31 +1,53 @@
 import * as service from "./assignmentLog.service.js";
 import * as response from "../../utils/response.util.js";
 
-// Assign Lead
-export const assignLead = async (req, res) => {
+// Assign lead
+export const assignLead = async (
+  req,
+  res
+) => {
   try {
-    const { assigned_to, assigned_by, note } = req.body;
-
-    const data = await service.assignLeadService(
-      req.params.id,
+    const {
       assigned_to,
       assigned_by,
-      note
+      note,
+    } = req.body;
+
+    const data =
+      await service.assignLeadService(
+        req.params.id,
+        assigned_to,
+        assigned_by,
+        note
+      );
+
+    return response.success(
+      res,
+      data,
+      "Lead Assigned Successfully"
     );
 
-    return response.success(res, data, "Lead Assigned Successfully");
   } catch (err) {
     return response.error(res, err);
   }
 };
 
-// Get Assignment History
-export const getAssignmentHistory = async (req, res) => {
-  try {
-    const data = await service.getAssignmentHistoryService(req.params.id);
+// Get assignment history
+export const getAssignmentHistory =
+  async (req, res) => {
+    try {
 
-    return response.success(res, data);
-  } catch (err) {
-    return response.error(res, err);
-  }
-};
+      const data =
+        await service.getAssignmentHistoryService(
+          req.params.id
+        );
+
+      return response.success(
+        res,
+        data
+      );
+
+    } catch (err) {
+      return response.error(res, err);
+    }
+  };
