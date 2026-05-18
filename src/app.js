@@ -4,8 +4,7 @@ import routeLead from "./modules/lead/lead.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import followupRoutes from "./modules/leadFollowups/followup.routes.js";
-app.use("/api", followupRoutes);
+import followupRoutes from "./modules/leadfollowup/followup.routes.js";
 
 const app = express();
 
@@ -28,7 +27,9 @@ app.get("/test", (req, res) => {
 // Routes
 app.use("/api", routeLead);
 
-// 404 handler (IMPORTANT)
+app.use("/api", followupRoutes);
+
+// 404 handler
 app.use((req, res) => {
   res.status(404).json({
     success: false,
