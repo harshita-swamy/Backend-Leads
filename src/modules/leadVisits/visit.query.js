@@ -1,6 +1,6 @@
 export const CREATE_VISIT =
 `INSERT INTO lead_visits
-(lead_id, visit_date, note)
+(lead_id, visit_date, notes)
 VALUES (?, ?, ?)`;
 
 export const GET_VISITS =
