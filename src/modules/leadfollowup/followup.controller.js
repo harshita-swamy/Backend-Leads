@@ -2,7 +2,7 @@ import * as followupService from "./followup.service.js";
 import * as response from "../../utils/response.util.js";
 
 // Create Followup
-export const createFollowup = async (req, res) => {
+export const createFollowup = async (req, res) => {  // DONE
   try {
     const data = await followupService.createFollowupService({
       lead_id: req.params.id,
@@ -21,7 +21,7 @@ export const createFollowup = async (req, res) => {
 };
 
 // Get Lead Followups
-export const getLeadFollowups = async (req, res) => {
+export const getLeadFollowups = async (req, res) => { // DONE
   try {
     const data = await followupService.getLeadFollowupsService(
       req.params.id
