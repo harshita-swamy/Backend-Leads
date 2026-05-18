@@ -3,7 +3,7 @@ import {
   updateLeadAssignmentQuery,
   insertAssignmentLogQuery,
   getAssignmentHistoryQuery,
-} from "../queries/assignmentLog.query.js";
+} from "./assignmentLog.query.js";
 
 // Assign lead + log history
 export const assignLeadService = async (
