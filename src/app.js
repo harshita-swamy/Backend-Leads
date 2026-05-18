@@ -4,6 +4,9 @@ import routeLead from "./modules/lead/lead.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import followupRoutes from "./modules/leadFollowups/followup.routes.js";
+app.use("/api", followupRoutes);
+
 const app = express();
 
 // Fix __dirname for ES Modules
