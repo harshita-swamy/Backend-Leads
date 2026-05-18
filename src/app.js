@@ -5,6 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import followupRoutes from "./modules/leadfollowup/followup.routes.js";
+import assignmentLogRoutes from "./modules/leadAssignmentLogs/assignmentLog.routes.js";
 
 const app = express();
 
@@ -26,8 +27,8 @@ app.get("/test", (req, res) => {
 
 // Routes
 app.use("/api", routeLead);
-
 app.use("/api", followupRoutes);
+app.use("/api", assignmentLogRoutes);
 
 // 404 handler
 app.use((req, res) => {
