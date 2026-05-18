@@ -2,8 +2,8 @@ import {
   createFollowupQuery,
   getFollowupsByLeadQuery,
   updateFollowupQuery,
-  deleteFollowupQuery,
-} from "../queries/followup.query.js";
+  deleteFollowupQuery
+} from "./followup.query.js";
 
 // Create Followup Service
 export const createFollowupService = async (data) => {
