@@ -1,4 +1,5 @@
 import express from "express";
+import { validateAssignLead } from "../../middlewares/assignment.validation.js";
 
 import {
   assignLead,
@@ -10,6 +11,7 @@ const router = express.Router();
 // Assign lead
 router.post(
   "/leads/:id/assign",
+  validateAssignLead,
   assignLead
 );
 
