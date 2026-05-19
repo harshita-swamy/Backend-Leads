@@ -1,6 +1,6 @@
 export const validateAssignLead = (req, res, next) => {
 
-  const { assigned_to, assigned_by } = req.body;
+const { assigned_to, assigned_by } = req.body;
 
   // Required fields check
   if (!assigned_to || !assigned_by) {

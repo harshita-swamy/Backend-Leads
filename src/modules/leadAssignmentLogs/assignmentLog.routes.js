@@ -1,6 +1,5 @@
 import express from "express";
-import { validateAssignLead } from "../../middlewares/assignment.validation.js";
-
+import { validateAssignLead } from "./assignment.validation.js";
 import {
   assignLead,
   getAssignmentHistory,
