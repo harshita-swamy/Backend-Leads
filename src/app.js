@@ -8,12 +8,12 @@ import assignmentLogRoutes from "./modules/leadAssignmentLogs/assignmentLog.rout
 import statusRoutes from "./modules/leadStatuses/status.routes.js";
 import sourceRoutes from "./modules/leadSources/source.routes.js";
 import visitRoutes from "./modules/leadVisits/visit.routes.js";
-import studentRoutes from "./modules/student/student.routes.js";
 import batchRoutes from "./modules/studentBatch/batch.routes.js";
 import attendanceRoutes from "./modules/attendance/attendance.routes.js";
 import paymentRoutes from "./modules/payments/payment.routes.js";
 import installmentRoutes from "./modules/paymentInstallments/installment.routes.js";
 import certificateRoutes from "./modules/certificates/certificate.routes.js";
+import studentRoutes from "./modules/student/student.routes.js";
 
 const app = express();
 
