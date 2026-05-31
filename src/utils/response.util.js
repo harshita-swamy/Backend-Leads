@@ -18,3 +18,4 @@ export const error = (res, err, statusCode = 500) => {
     message: err?.message || "Internal Server Error",
   });
 };
+
