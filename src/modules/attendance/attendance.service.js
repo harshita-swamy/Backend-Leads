@@ -5,14 +5,14 @@ export const createAttendanceService = async (
 ) => {
   const {
     student_batch_id,
-    attendance_date,
+    date,
     status,
   } = data;
 
   const result =
     await attendanceQuery.createAttendance(
       student_batch_id,
-      attendance_date,
+      date,
       status
     );
 

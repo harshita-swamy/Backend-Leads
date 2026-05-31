@@ -2,14 +2,14 @@ import { pool } from "../../config/db.config.js";
 
 export const createAttendance = async (
   student_batch_id,
-  attendance_date,
+  date,
   status
 ) => {
   const [res] = await pool.query(
     `INSERT INTO attendance
-    (student_batch_id, attendance_date, status)
+    (student_batch_id, date, status)
     VALUES (?, ?, ?)`,
-    [student_batch_id, attendance_date, status]
+    [student_batch_id, date, status]
   );
 
   return res;
@@ -21,7 +21,7 @@ export const getAttendanceByBatch = async (
   const [res] = await pool.query(
     `SELECT * FROM attendance
      WHERE student_batch_id = ?
-     ORDER BY attendance_date DESC`,
+     ORDER BY date DESC`,
     [student_batch_id]
   );
 
