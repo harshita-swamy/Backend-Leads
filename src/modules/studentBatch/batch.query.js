@@ -28,7 +28,7 @@ export const getStudentBatchByStudentId = async (
   student_id
 ) => {
   const [res] = await pool.query(
-    "SELECT * FROM student_batch WHERE id = ?",
+    "SELECT * FROM student_batch WHERE student_id = ?",
     [student_id]
   );
 
