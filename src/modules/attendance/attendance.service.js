@@ -7,13 +7,15 @@ export const createAttendanceService = async (
     student_batch_id,
     date,
     status,
+    marked_by,
   } = data;
 
   const result =
     await attendanceQuery.createAttendance(
       student_batch_id,
       date,
-      status
+      status,
+      marked_by
     );
 
   return {
