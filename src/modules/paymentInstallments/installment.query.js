@@ -29,15 +29,17 @@ export const createInstallment = async (
   return res;
 };
 
-export const getInstallmentsByStudent = async (
-  student_id
-) => {
+export const getInstallmentsByStudent = async (student_id) => {
+  console.log("student_id received:", student_id);
+
   const [rows] = await pool.query(
     `SELECT * FROM payment_installments
      WHERE student_id = ?
      ORDER BY installment_no ASC`,
     [student_id]
   );
+
+  console.log("rows:", rows);
 
   return rows;
 };
