@@ -4,7 +4,9 @@ export const createCertificate = async (
   student_id,
   course_id,
   certificate_number,
-  status
+  status,
+  issued_at,
+  issued_by
 ) => {
   const [res] = await pool.query(
     `INSERT INTO certificates
@@ -12,14 +14,18 @@ export const createCertificate = async (
       student_id,
       course_id,
       certificate_number,
-      status
+      status,
+      issued_at,
+      issued_by
     )
-    VALUES (?, ?, ?, ?)`,
+    VALUES (?, ?, ?, ?, ?, ?)`,
     [
       student_id,
       course_id,
       certificate_number,
-      status
+      status,
+      issued_at,
+      issued_by
     ]
   );
 

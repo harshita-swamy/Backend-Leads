@@ -8,7 +8,9 @@ export const createCertificateService = async (
       data.student_id,
       data.course_id,
       data.certificate_number,
-      data.status
+      data.status,
+      data.issued_at,
+      data.issued_by
     );
 
   return {
