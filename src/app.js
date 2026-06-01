@@ -14,6 +14,7 @@ import paymentRoutes from "./modules/payments/payment.routes.js";
 import installmentRoutes from "./modules/paymentInstallments/installment.routes.js";
 import certificateRoutes from "./modules/certificates/certificate.routes.js";
 import studentRoutes from "./modules/student/student.routes.js";
+import feeStructureRoutes from "./modules/feeStructure/feeStructure.routes.js";
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use("/api", attendanceRoutes);
 app.use("/api", paymentRoutes);
 app.use("/api", installmentRoutes);
 app.use("/api", certificateRoutes);
+app.use("/api", feeStructureRoutes);
 
 // 404 handler
 app.use((req, res) => {
