@@ -50,17 +50,71 @@ export const createPayment = async (
   return res;
 };
 
-export const getPaymentsByStudent = async (
-  student_id
-) => {
+export const getAllPayments = async () => {
   const [rows] = await pool.query(
-    `SELECT * FROM payments
-     WHERE student_id = ?
-     ORDER BY id DESC`,
-    [student_id]
+    "SELECT * FROM payments ORDER BY id DESC"
   );
 
   return rows;
+};
+
+export const getPaymentById = async (id) => {
+  const [rows] = await pool.query(
+    "SELECT * FROM payments WHERE id = ?",
+    [id]
+  );
+
+  return rows;
+};
+
+export const updatePaymentById = async (
+  id,
+  student_id,
+  fee_structure_id,
+  amount,
+  discount,
+  payment_method,
+  status,
+  transaction_id,
+  receipt_number,
+  collected_by,
+  payment_date,
+  due_date,
+  notes
+) => {
+  const [res] = await pool.query(
+    `UPDATE payments
+     SET student_id = ?,
+         fee_structure_id = ?,
+         amount = ?,
+         discount = ?,
+         payment_method = ?,
+         status = ?,
+         transaction_id = ?,
+         receipt_number = ?,
+         collected_by = ?,
+         payment_date = ?,
+         due_date = ?,
+         notes = ?
+     WHERE id = ?`,
+    [
+      student_id,
+      fee_structure_id,
+      amount,
+      discount,
+      payment_method,
+      status,
+      transaction_id,
+      receipt_number,
+      collected_by,
+      payment_date,
+      due_date,
+      notes,
+      id,
+    ]
+  );
+
+  return res;
 };
 
 export const deletePayment = async (id) => {
