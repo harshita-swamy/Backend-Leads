@@ -1,25 +1,17 @@
-export const validateAssignLead = (req, res, next) => {
+import { body, param } from "express-validator";
 
-const { assigned_to, assigned_by } = req.body;
+export const validateAssignLead = [
+  body("assigned_to")
+    .isInt()
+    .withMessage("assigned_to required"),
 
-  // Required fields check
-  if (!assigned_to || !assigned_by) {
-    return res.status(400).json({
-      success: false,
-      message: "assigned_to and assigned_by are required",
-    });
-  }
+  body("assigned_by")
+    .isInt()
+    .withMessage("assigned_by required"),
+];
 
-  // Number check
-  if (
-    isNaN(assigned_to) ||
-    isNaN(assigned_by)
-  ) {
-    return res.status(400).json({
-      success: false,
-      message: "assigned_to and assigned_by must be numbers",
-    });
-  }
-
-  next();
-};
+export const assignmentIdValidation = [
+  param("id")
+    .isInt()
+    .withMessage("Valid ID required"),
+];
