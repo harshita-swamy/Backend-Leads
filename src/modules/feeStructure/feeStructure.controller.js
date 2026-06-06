@@ -66,3 +66,22 @@ export const deleteFeeStructure =
       return response.error(res, err);
     }
   };
+
+  export const updateFeeStructure =
+  async (req, res) => {
+    try {
+      const data =
+        await feeStructureService.updateFeeStructureService(
+          req.params.id,
+          req.body
+        );
+
+      return response.success(
+        res,
+        data,
+        "Fee Structure Updated Successfully"
+      );
+    } catch (err) {
+      return response.error(res, err);
+    }
+  };

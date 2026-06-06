@@ -51,3 +51,30 @@ export const deleteFeeStructure = async (id) => {
 
   return res;
 };
+
+export const updateFeeStructure = async (
+  id,
+  course_id,
+  name,
+  total_amount,
+  installments
+) => {
+  const [res] = await pool.query(
+    `UPDATE fee_structures
+     SET
+       course_id = ?,
+       name = ?,
+       total_amount = ?,
+       installments = ?
+     WHERE id = ?`,
+    [
+      course_id,
+      name,
+      total_amount,
+      installments,
+      id,
+    ]
+  );
+
+  return res;
+};

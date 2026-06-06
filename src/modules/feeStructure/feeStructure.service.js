@@ -38,3 +38,20 @@ export const deleteFeeStructureService =
       affectedRows: result.affectedRows,
     };
   };
+
+  export const updateFeeStructureService =
+  async (id, data) => {
+    const result =
+      await feeStructureQuery.updateFeeStructure(
+        id,
+        data.course_id,
+        data.name,
+        data.total_amount,
+        data.installments
+      );
+
+    return {
+      success: true,
+      affectedRows: result.affectedRows,
+    };
+  };
