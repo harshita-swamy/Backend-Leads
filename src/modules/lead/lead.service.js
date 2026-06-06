@@ -144,6 +144,20 @@ export const deleteLeadService =
     };
   };
 
+  export const getLeadByIdService =
+  async (id) => {
+
+    if (!id) {
+      throw new Error(
+        "Lead ID required"
+      );
+    }
+
+    return await leadQuery.getLeadById(
+      id
+    );
+  };
+  
 // Update Login
 export const updateLoginService =
   async (person_id) => {

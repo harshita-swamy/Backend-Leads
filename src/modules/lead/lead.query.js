@@ -138,6 +138,18 @@ export const getAllLeads = async () => {
   return res;
 };
 
+export const getLeadById = async (id) => {
+  const [res] = await pool.query(
+    `SELECT *
+     FROM leads
+     WHERE id = ?
+     AND deleted_at IS NULL`,
+    [id]
+  );
+
+  return res;
+};
+
 // Soft Delete Lead
 export const deleteLeadById = async (
   id

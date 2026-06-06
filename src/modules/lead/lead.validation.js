@@ -17,32 +17,35 @@ export const createLeadValidation = [
     .withMessage("Phone must be 10 to 15 digits"),
 
   body("course_id")
-    .notEmpty()
-    .withMessage("Course ID is required")
     .isInt()
-    .withMessage("Course ID must be a number"),
+    .withMessage("Course ID required"),
 
   body("source_id")
-    .notEmpty()
-    .withMessage("Source ID is required")
     .isInt()
-    .withMessage("Source ID must be a number"),
+    .withMessage("Source ID required"),
 
   body("priority")
     .optional()
     .isIn(["low", "medium", "high"])
-    .withMessage("Priority must be low, medium, or high"),
+    .withMessage(
+      "Priority must be low, medium or high"
+    ),
+];
+
+// Lead ID Validation
+export const leadIdValidation = [
+  param("id")
+    .isInt()
+    .withMessage("Valid Lead ID required"),
 ];
 
 // Update Status Validation
 export const updateStatusValidation = [
   param("id")
     .isInt()
-    .withMessage("Valid lead ID required"),
+    .withMessage("Valid Lead ID required"),
 
   body("status_id")
-    .notEmpty()
-    .withMessage("Status ID required")
     .isInt()
-    .withMessage("Status ID must be a number"),
+    .withMessage("Status ID required"),
 ];
