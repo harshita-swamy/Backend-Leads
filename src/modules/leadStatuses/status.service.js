@@ -1,31 +1,65 @@
 import { pool } from "../../config/db.config.js";
 import * as query from "./status.query.js";
 
-export const getAllStatusesService = async () => {
-  const [rows] = await pool.query(query.GET_ALL_STATUSES);
-  return rows;
-};
+export const getAllStatusesService =
+  async () => {
+    const [rows] =
+      await pool.query(
+        query.GET_ALL_STATUSES
+      );
 
-export const createStatusService = async (name) => {
-  const [result] = await pool.query(
-    query.CREATE_STATUS,
-    [name]
-  );
-
-  return {
-    id: result.insertId,
-    name,
+    return rows;
   };
-};
 
-export const updateStatusService = async (id, name) => {
-  await pool.query(
-    query.UPDATE_STATUS,
-    [name, id]
-  );
+export const getStatusByIdService =
+  async (id) => {
+    const [rows] =
+      await pool.query(
+        query.GET_STATUS_BY_ID,
+        [id]
+      );
 
-  return {
-    id,
-    name,
+    return rows;
   };
-};
+
+export const createStatusService =
+  async (name) => {
+    const [result] =
+      await pool.query(
+        query.CREATE_STATUS,
+        [name]
+      );
+
+    return {
+      id: result.insertId,
+      name,
+    };
+  };
+
+export const updateStatusService =
+  async (id, name) => {
+    await pool.query(
+      query.UPDATE_STATUS,
+      [name, id]
+    );
+
+    return {
+      id,
+      name,
+    };
+  };
+
+export const deleteStatusService =
+  async (id) => {
+    const [result] =
+      await pool.query(
+        query.DELETE_STATUS,
+        [id]
+      );
+
+    return {
+      success: true,
+      affectedRows:
+        result.affectedRows,
+    };
+  };

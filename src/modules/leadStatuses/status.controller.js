@@ -1,46 +1,104 @@
 import * as service from "./status.service.js";
 import * as response from "../../utils/response.util.js";
 
-export const getAllStatuses = async (req, res) => {
-  try {
-    const data = await service.getAllStatusesService();
-    return response.success(res, data);
-  } catch (err) {
-    return response.error(res, err);
-  }
-};
+export const getAllStatuses =
+  async (req, res) => {
+    try {
+      const data =
+        await service.getAllStatusesService();
 
-export const createStatus = async (req, res) => {
-  try {
-    const data = await service.createStatusService(
-      req.body.name
-    );
+      return response.success(
+        res,
+        data
+      );
+    } catch (err) {
+      return response.error(
+        res,
+        err
+      );
+    }
+  };
 
-    return response.success(
-      res,
-      data,
-      "Status Created Successfully"
-    );
+export const getStatusById =
+  async (req, res) => {
+    try {
+      const data =
+        await service.getStatusByIdService(
+          req.params.id
+        );
 
-  } catch (err) {
-    return response.error(res, err);
-  }
-};
+      return response.success(
+        res,
+        data
+      );
+    } catch (err) {
+      return response.error(
+        res,
+        err
+      );
+    }
+  };
 
-export const updateStatus = async (req, res) => {
-  try {
-    const data = await service.updateStatusService(
-      req.params.id,
-      req.body.name
-    );
+export const createStatus =
+  async (req, res) => {
+    try {
+      const data =
+        await service.createStatusService(
+          req.body.name
+        );
 
-    return response.success(
-      res,
-      data,
-      "Status Updated Successfully"
-    );
+      return response.success(
+        res,
+        data,
+        "Status Created Successfully"
+      );
+    } catch (err) {
+      return response.error(
+        res,
+        err
+      );
+    }
+  };
 
-  } catch (err) {
-    return response.error(res, err);
-  }
-};
+export const updateStatus =
+  async (req, res) => {
+    try {
+      const data =
+        await service.updateStatusService(
+          req.params.id,
+          req.body.name
+        );
+
+      return response.success(
+        res,
+        data,
+        "Status Updated Successfully"
+      );
+    } catch (err) {
+      return response.error(
+        res,
+        err
+      );
+    }
+  };
+
+export const deleteStatus =
+  async (req, res) => {
+    try {
+      const data =
+        await service.deleteStatusService(
+          req.params.id
+        );
+
+      return response.success(
+        res,
+        data,
+        "Status Deleted Successfully"
+      );
+    } catch (err) {
+      return response.error(
+        res,
+        err
+      );
+    }
+  };
