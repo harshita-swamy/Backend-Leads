@@ -13,6 +13,16 @@ router.get(
   attendanceController.getAttendance
 );
 
+router.get(
+  "/getAttendanceById/:id",
+  attendanceController.getAttendanceById
+);
+
+router.put(
+  "/updateAttendance/:id",
+  attendanceController.updateAttendance
+);
+
 router.delete(
   "/deleteAttendance/:id",
   attendanceController.deleteAttendance

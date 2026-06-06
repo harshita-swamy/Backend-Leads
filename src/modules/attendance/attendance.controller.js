@@ -21,6 +21,43 @@ export const createAttendance = async (
   }
 };
 
+export const getAttendanceById = async (
+  req,
+  res
+) => {
+  try {
+    const data =
+      await attendanceService.getAttendanceByIdService(
+        req.params.id
+      );
+
+    return response.success(res, data);
+  } catch (err) {
+    return response.error(res, err);
+  }
+};
+
+export const updateAttendance = async (
+  req,
+  res
+) => {
+  try {
+    const data =
+      await attendanceService.updateAttendanceService(
+        req.params.id,
+        req.body
+      );
+
+    return response.success(
+      res,
+      data,
+      "Attendance Updated Successfully"
+    );
+  } catch (err) {
+    return response.error(res, err);
+  }
+};
+
 export const getAttendance = async (
   req,
   res

@@ -43,3 +43,27 @@ export const deleteAttendanceService = async (
     affectedRows: result.affectedRows,
   };
 };
+
+export const getAttendanceByIdService =
+  async (id) => {
+    return await attendanceQuery.getAttendanceById(
+      id
+    );
+  };
+
+export const updateAttendanceService =
+  async (id, data) => {
+    const result =
+      await attendanceQuery.updateAttendance(
+        id,
+        data.student_batch_id,
+        data.date,
+        data.status,
+        data.marked_by
+      );
+
+    return {
+      success: true,
+      affectedRows: result.affectedRows,
+    };
+  };

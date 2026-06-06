@@ -29,6 +29,42 @@ export const getAttendanceByBatch = async (
   return res;
 };
 
+export const getAttendanceById = async (id) => {
+  const [res] = await pool.query(
+    "SELECT * FROM attendance WHERE id = ?",
+    [id]
+  );
+
+  return res;
+};
+
+export const updateAttendance = async (
+  id,
+  student_batch_id,
+  date,
+  status,
+  marked_by
+) => {
+  const [res] = await pool.query(
+    `UPDATE attendance
+     SET
+       student_batch_id = ?,
+       date = ?,
+       status = ?,
+       marked_by = ?
+     WHERE id = ?`,
+    [
+      student_batch_id,
+      date,
+      status,
+      marked_by,
+      id,
+    ]
+  );
+
+  return res;
+};
+
 export const deleteAttendance = async (id) => {
   const [res] = await pool.query(
     "DELETE FROM attendance WHERE id = ?",

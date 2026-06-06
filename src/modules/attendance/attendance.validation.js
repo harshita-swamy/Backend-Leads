@@ -1,13 +1,13 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 
 export const createAttendanceValidation = [
   body("student_batch_id")
     .isInt()
     .withMessage("Student Batch ID required"),
 
-  body("attendance_date")
+  body("date")
     .notEmpty()
-    .withMessage("Attendance Date required"),
+    .withMessage("Date required"),
 
   body("status")
     .isIn([
@@ -17,4 +17,16 @@ export const createAttendanceValidation = [
       "leave",
     ])
     .withMessage("Invalid status"),
+];
+
+export const attendanceIdValidation = [
+  param("id")
+    .isInt()
+    .withMessage("Valid Attendance ID required"),
+];
+
+export const updateAttendanceValidation = [
+  param("id")
+    .isInt()
+    .withMessage("Valid Attendance ID required"),
 ];
