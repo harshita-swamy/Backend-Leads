@@ -1,32 +1,62 @@
-import { pool } from "../../config/db.config.js";
-import * as query from "./visit.query.js";
+import * as visitQuery from "./visit.query.js";
 
-export const createVisitService = async (data) => {
-
-  const {
-    lead_id,
-    visited_by,
-    visit_date,
-    notes
-  } = data;
-
-  const [result] = await pool.query(
-    query.CREATE_VISIT,
-    [lead_id, visited_by, visit_date, notes]
-  );
+export const createVisitService = async (
+  data
+) => {
+  const result =
+    await visitQuery.createVisit(
+      data.lead_id,
+      data.visited_by,
+      data.visit_date,
+      data.status,
+      data.notes
+    );
 
   return {
+    success: true,
     id: result.insertId,
-    ...data,
   };
 };
 
-export const getVisitsService = async (lead_id) => {
+export const getAllVisitsService =
+  async () => {
+    return await visitQuery.getAllVisits();
+  };
 
-  const [rows] = await pool.query(
-    query.GET_VISITS,
-    [lead_id]
-  );
+export const getVisitByIdService =
+  async (id) => {
+    return await visitQuery.getVisitById(
+      id
+    );
+  };
 
-  return rows;
-};
+export const updateVisitService =
+  async (id, data) => {
+    const result =
+      await visitQuery.updateVisitById(
+        id,
+        data.lead_id,
+        data.visited_by,
+        data.visit_date,
+        data.status,
+        data.notes
+      );
+
+    return {
+      success: true,
+      affectedRows:
+        result.affectedRows,
+    };
+  };
+
+export const deleteVisitService =
+  async (id) => {
+    const result =
+      await visitQuery.deleteVisit(id);
+
+    return {
+      success: true,
+      affectedRows:
+        result.affectedRows,
+    };
+  };
