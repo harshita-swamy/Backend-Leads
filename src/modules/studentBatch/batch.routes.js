@@ -14,8 +14,13 @@ router.get(
 );
 
 router.get(
-  "/getStudentBatch/:student_id",
+  "/getStudentBatch/:id",
   batchController.getStudentBatch
+);
+
+router.put(
+  "/updateStudentBatch/:id",
+  batchController.updateStudentBatch
 );
 
 router.delete(

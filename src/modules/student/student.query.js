@@ -8,9 +8,19 @@ export const createStudent = async (
 ) => {
   const [res] = await pool.query(
     `INSERT INTO students
-    (person_id, lead_id, enrollment_number, admission_date)
+    (
+      person_id,
+      lead_id,
+      enrollment_number,
+      admission_date
+    )
     VALUES (?, ?, ?, ?)`,
-    [person_id, lead_id, enrollment_number, admission_date]
+    [
+      person_id,
+      lead_id,
+      enrollment_number,
+      admission_date,
+    ]
   );
 
   return res;
@@ -28,6 +38,32 @@ export const getStudentById = async (id) => {
   const [res] = await pool.query(
     "SELECT * FROM students WHERE id = ?",
     [id]
+  );
+
+  return res;
+};
+
+export const updateStudentById = async (
+  id,
+  person_id,
+  lead_id,
+  enrollment_number,
+  admission_date
+) => {
+  const [res] = await pool.query(
+    `UPDATE students
+     SET person_id = ?,
+         lead_id = ?,
+         enrollment_number = ?,
+         admission_date = ?
+     WHERE id = ?`,
+    [
+      person_id,
+      lead_id,
+      enrollment_number,
+      admission_date,
+      id,
+    ]
   );
 
   return res;

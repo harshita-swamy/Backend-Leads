@@ -1,11 +1,15 @@
 import * as studentService from "./student.service.js";
 import * as response from "../../utils/response.util.js";
 
-export const createStudent = async (req, res) => {
+export const createStudent = async (
+  req,
+  res
+) => {
   try {
-    const data = await studentService.createStudentService(
-      req.body
-    );
+    const data =
+      await studentService.createStudentService(
+        req.body
+      );
 
     return response.success(
       res,
@@ -17,7 +21,10 @@ export const createStudent = async (req, res) => {
   }
 };
 
-export const getAllStudents = async (req, res) => {
+export const getAllStudents = async (
+  req,
+  res
+) => {
   try {
     const data =
       await studentService.getAllStudentsService();
@@ -28,7 +35,10 @@ export const getAllStudents = async (req, res) => {
   }
 };
 
-export const getStudentById = async (req, res) => {
+export const getStudentById = async (
+  req,
+  res
+) => {
   try {
     const data =
       await studentService.getStudentByIdService(
@@ -41,7 +51,31 @@ export const getStudentById = async (req, res) => {
   }
 };
 
-export const deleteStudent = async (req, res) => {
+export const updateStudent = async (
+  req,
+  res
+) => {
+  try {
+    const data =
+      await studentService.updateStudentService(
+        req.params.id,
+        req.body
+      );
+
+    return response.success(
+      res,
+      data,
+      "Student Updated Successfully"
+    );
+  } catch (err) {
+    return response.error(res, err);
+  }
+};
+
+export const deleteStudent = async (
+  req,
+  res
+) => {
   try {
     const data =
       await studentService.deleteStudentService(
