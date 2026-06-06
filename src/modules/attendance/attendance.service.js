@@ -67,3 +67,8 @@ export const updateAttendanceService =
       affectedRows: result.affectedRows,
     };
   };
+
+  export const getAllAttendanceService =
+  async () => {
+    return await attendanceQuery.getAllAttendance();
+  };

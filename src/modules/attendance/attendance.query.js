@@ -16,6 +16,14 @@ export const createAttendance = async (
   return res;
 };
 
+export const getAllAttendance = async () => {
+  const [rows] = await pool.query(
+    "SELECT * FROM attendance"
+  );
+
+  return rows;
+};
+
 export const getAttendanceByBatch = async (
   student_batch_id
 ) => {

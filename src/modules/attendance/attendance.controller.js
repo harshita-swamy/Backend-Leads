@@ -21,6 +21,17 @@ export const createAttendance = async (
   }
 };
 
+export const getAllAttendance = async (req, res) => {
+  try {
+    const data =
+      await attendanceService.getAllAttendanceService();
+
+    return response.success(res, data);
+  } catch (err) {
+    return response.error(res, err);
+  }
+};
+
 export const getAttendanceById = async (
   req,
   res

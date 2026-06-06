@@ -18,6 +18,11 @@ router.get(
   attendanceController.getAttendanceById
 );
 
+router.get(
+  "/getAllAttendance",
+  attendanceController.getAllAttendance
+);
+
 router.put(
   "/updateAttendance/:id",
   attendanceController.updateAttendance
