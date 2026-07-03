@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import routeLead from "./modules/lead/lead.routes.js";
+import routeLead from "./modules/lead_from_POST/lead.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import followupRoutes from "./modules/leadfollowup/followup.routes.js";
@@ -15,6 +15,7 @@ import installmentRoutes from "./modules/paymentInstallments/installment.routes.
 import certificateRoutes from "./modules/certificates/certificate.routes.js";
 import studentRoutes from "./modules/student/student.routes.js";
 import feeStructureRoutes from "./modules/feeStructure/feeStructure.routes.js";
+import leadRoutes from "./modules/lead_localhost/leads.routes.js";
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use("/api", paymentRoutes);
 app.use("/api", installmentRoutes);
 app.use("/api", certificateRoutes);
 app.use("/api", feeStructureRoutes);
+app.use("/api", leadRoutes);
 
 // 404 handler
 app.use((req, res) => {
