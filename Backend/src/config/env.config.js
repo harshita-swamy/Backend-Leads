@@ -17,11 +17,4 @@ const env = {
   },
 };
 
-
-
-console.log({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  db: process.env.MYSQLDATABASE,
-});
 export default env;
